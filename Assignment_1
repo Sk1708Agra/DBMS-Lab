@@ -1,0 +1,59 @@
+-- Table COLLEGE
+
+create table College (cName varchar(10), state varchar(10), enrollment int);
+
+insert into College (cName, state, Enrollment) values ('Stanford', 'CA', 15000);
+insert into College (cName, state, Enrollment) values ('Berkley', 'CA', 36000);
+insert into College (cName, state, Enrollment) values ('MIT', 'MA', 10000);
+insert into College (cName, state, Enrollment) values ('Cornell', 'NY', 21000);
+insert into College (cName, state, Enrollment) values ('Harvard', 'MA', 50040);
+
+Select * from College;
+
+-- Table APPLY
+Create table Apply (sID int, cName varchar(10), major varchar(20), decision char(1));
+
+insert into Apply(sID, cName, major, decision) values (123, 'Stanford', 'CS', 'Y');
+insert into Apply(sID, cName, major, decision) values (123, 'Stanford', 'EE', 'N');
+insert into Apply(sID, cName, major, decision) values (123, 'Berkeley', 'CS', 'Y');
+insert into Apply(sID, cName, major, decision) values (123, 'Cornell', 'EE', 'Y');
+insert into Apply(sID, cName, major, decision) values (234, 'Berkeley', 'biology', 'N');
+insert into Apply(sID, cName, major, decision) values (345, 'MIT', 'bioengineering', 'Y');
+insert into Apply(sID, cName, major, decision) values (345, 'Cornell', 'bioengineering', 'N');
+insert into Apply(sID, cName, major, decision) values (345, 'Cornell', 'CS', 'Y');
+insert into Apply(sID, cName, major, decision) values (345, 'Cornell', 'EE', 'N');
+insert into Apply(sID, cName, major, decision) values (678, 'Stanford', 'History', 'Y');
+insert into Apply(sID, cName, major, decision) values (987, 'Stanford', 'CS', 'Y');
+insert into Apply(sID, cName, major, decision) values (987, 'Berkeley', 'CS', 'Y');
+insert into Apply(sID, cName, major, decision) values (876, 'Stanford', 'CS', 'N');
+insert into Apply(sID, cName, major, decision) values (876, 'MIT', 'biology', 'Y');
+insert into Apply(sID, cName, major, decision) values (876, 'MIT', 'marine biology', 'N');
+insert into Apply(sID, cName, major, decision) values (765, 'Stanford', 'history', 'Y');
+insert into Apply(sID, cName, major, decision) values (765, 'Cornell', 'history', 'N');
+insert into Apply(sID, cName, major, decision) values (765, 'Cornell', 'psychology', 'Y');
+insert into Apply(sID, cName, major, decision) values (543, 'MIT', 'CS', 'N');
+
+select * from Apply;
+
+-- Table STUDENT
+
+Create table Student (sID int, sName varchar(10), GPA number (2,1), sizeHS int, Age number (5));
+
+insert into Student (sId, sName, GPA, sizeHS, Age) values (123, 'Amy', 3.9, 1000, 22);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (234, 'Bob', 3.6, 1500, 23);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (345, 'Craig', 3.5, 500, 20);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (456, 'Doris', 3.9, 1000, 20);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (567, 'Edward', 2.9, 2000, 22);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (678, 'Fay', 3.8, 200, 25);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (789, 'Gary', 3.4, 800, 29);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (987, 'Helen', 3.7, 800, 27);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (876, 'Irene', 3.9, 400, 22);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (765, 'Jay', 3.9, 1000, 28);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (654, 'Amy', 3.9, 1000, 21);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (543, 'Craig', 3.4, 2000, 20);
+
+Select * from Student;
+
+
+
+
