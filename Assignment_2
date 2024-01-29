@@ -1,0 +1,12 @@
+-- Table DEPARTMENT
+
+create table Department (Dptno number(3) Primary Key, Dname varchar2 (20) Unique, Location varchar(20) Not null);
+
+Alter Table Department
+Add Constraint CHK_LOC CHECK (Location in ('Delhi', 'Pune', 'Agra'));
+
+insert into Department values (312, 'Procurement', 'Delhi');
+insert into Department values (310, 'Manufacturing', 'Pune');
+
+Select * from Department;
+
