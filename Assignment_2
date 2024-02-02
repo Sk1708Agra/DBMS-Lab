@@ -14,3 +14,4 @@ Alter table Student drop column sizeHS;
 Alter table College drop Primary Key;
 
 desc College;
+-- Point numbers 4, 11, 12, 13, 14. Need Assistance. 
