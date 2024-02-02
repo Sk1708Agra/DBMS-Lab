@@ -1,12 +1,16 @@
--- Table DEPARTMENT
+Create table College (cName varchar2 (10), state varchar2 (10), enrollment int);
+Create table Student (sID int, sName varchar2(20), GPA number (2,1), sizeHS int);
+Create table Apply (sId int, cName varchar2 (10), major varchar2 (20));
 
-create table Department (Dptno number(3) Primary Key, Dname varchar2 (20) Unique, Location varchar(20) Not null);
+alter table College add Primary key (cName);
+alter table Student add Primary key (sID);
+alter table Apply add Primary key (sID, cName, major);
+alter table Apply add constraint adding_FK foreign key (sID) references Student (sID);
+-- alter table Apply add constraint adding_FK foreign key (sID) references College (cName);
+alter table Apply modify major varchar2 (25);
+alter table Apply add decision varchar2 (3) not null;
+alter table Apply modify decision char (1);
+Alter table Student drop column sizeHS; 
+Alter table College drop Primary Key;
 
-Alter Table Department
-Add Constraint CHK_LOC CHECK (Location in ('Delhi', 'Pune', 'Agra'));
-
-insert into Department values (312, 'Procurement', 'Delhi');
-insert into Department values (310, 'Manufacturing', 'Pune');
-
-Select * from Department;
-
+desc College;
