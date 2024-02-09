@@ -50,6 +50,10 @@ SELECT Student.sID, sName, GPA, cName, major, sizeHS, decision
 FROM Student INNER JOIN Apply
 ON Student.sID = Apply.sID;
 
+SELECT Student.sID, sName, GPA, cName, major
+FROM Student INNER JOIN Apply
+ON Student.sID = Apply.sID;
+
 
 
 
