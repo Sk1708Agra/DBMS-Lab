@@ -1,14 +1,6 @@
-
-create table College(cName varchar2(10) primary key, state
-varchar2(10), enrollment int);
-
-create table Student(sID int primary key, sName varchar2(10), GPA
-real, sizeHS int);
-
-create table Apply(sID int, cName varchar2(10), major varchar2(20),
-decision char(1), primary key(sID, major, cName), constraint sID_fk
-Foreign key(sID) references Student, constraint cName_fk Foreign
-key(cName) references College);
+create table College(cName varchar2(10) primary key, state varchar2(10), enrollment int);
+create table Student(sID int primary key, sName varchar2(10), GPA real, sizeHS int);
+create table Apply(sID int, cName varchar2(10), major varchar2(20), decision char(1), primary key(sID, major, cName), constraint sID_fk Foreign key(sID) references Student, constraint cName_fk Foreign key(cName) references College);
 
 insert into Student values (123, 'Amy', 3.9, 1000);
 insert into Student values (234, 'Bob', 3.6, 1500);
@@ -47,14 +39,78 @@ insert into Apply values (876, 'MIT', 'marine biology', 'N');
 insert into Apply values (765, 'Stanford', 'history', 'Y');
 insert into Apply values (765, 'Cornell', 'history', 'N');
 insert into Apply values (765, 'Cornell', 'psychology', 'Y');
-insert into Apply values (543, 'MIT', 'CS', 'N');
+insert into Apply values (543, 'MIT', 'CS', 'N'); 
 
-Select * from Apply;
+Select * from Student;
 Select * from College;
-Select * from Student; 
+Select * from Apply;
 
-Alter table student add DoB date;
-Update student SET DOB = '7-APR-95' WHERE SID = 234;
-Select round(avg(gpa),2) from student;
-Select extract (year from dob) from Student where sizehs < 1000;
-Select extract (year from sysdate()) - extract (year from dob) from student;
+ALTER TABLE Student
+ADD DoB DATE;
+
+UPDATE Student
+SET DoB = CASE
+    WHEN sID = 123 THEN TO_DATE('26-JUN-96', 'DD-MON-YY')
+    WHEN sID = 234 THEN TO_DATE('7-Apr-95', 'DD-Mon-YY')
+    WHEN sID = 345 THEN TO_DATE('4-Feb-95', 'DD-Mon-YY')
+    WHEN sID = 456 THEN TO_DATE('24-Jul-97', 'DD-Mon-YY')
+    WHEN sID = 567 THEN TO_DATE('21-Dec-96', 'DD-Mon-YY')
+    WHEN sID = 678 THEN TO_DATE('27-Aug-96', 'DD-Mon-YY')
+    WHEN sID = 789 THEN TO_DATE('8-Oct-96', 'DD-Mon-YY')
+    WHEN sID = 987 THEN TO_DATE('27-Mar-97', 'DD-Mon-YY')
+    WHEN sID = 876 THEN TO_DATE('7-Mar-96', 'DD-Mon-YY')
+    WHEN sID = 765 THEN TO_DATE('8-Aug-98', 'DD-Mon-YY')
+    WHEN sID = 654 THEN TO_DATE('26-May-96', 'DD-Mon-YY')
+    WHEN sID = 543 THEN TO_DATE('27-Aug-98', 'DD-Mon-YY')
+END;
+
+SELECT ROUND(AVG(GPA), 2) AS Average_GPA
+FROM Student;
+
+SELECT EXTRACT(YEAR FROM DoB) AS Birth_Year
+FROM Student
+WHERE sizeHS < 1000;
+
+SELECT sName, EXTRACT(YEAR FROM sysdate) - EXTRACT(YEAR FROM DoB) AS Age
+FROM Student;
+
+-- SELECT UPPER(sName) AS Student_Name, LOWER(cName) AS College_Name
+-- FROM Student, College
+-- WHERE Student.sID = College.sID;
+
+SELECT SUBSTR(sName, 4, 1) AS Fourth_Alphabet
+FROM Student;
+
+SELECT sID, sName
+FROM Student
+WHERE LENGTH(sName) > 3;
+
+SELECT FLOOR(AVG(GPA)) AS Floor_Value, CEIL(AVG(GPA)) AS Ceiling_Value, TRUNC(AVG(GPA), 1) AS Truncated_Value
+FROM Student;
+
+SELECT *
+FROM Student
+WHERE MOD(sID, 2) = 0;
+
+SELECT SQRT(900) AS Square_Root_900, SQRT(247) AS Square_Root_247
+FROM dual;
+
+SELECT INSTR('Peter Piper picked a peck of pickled peppers. A peck of pickled peppers Peter Piper picked. If Peter Piper picked a peck of pickled peppers, Where the peck of pickled peppers Peter Piper picked?', 'pick', 1, 6) AS Occurrence
+FROM dual;
+
+SELECT TRANSLATE('Satya Nadella', 'a e l N S t 1 2 3 4 5 6 y', '7 1 2 3 4 5 6 7 7 7 7 7 7') AS Translated_String
+FROM dual;
+
+SELECT sID, sName, TO_CHAR(DoB, 'Month DD, YYYY') AS Formatted_DoB
+FROM Student;
+
+SELECT TO_DATE('26/02/2014', 'DD/MM/YYYY') AS Converted_Date
+FROM dual;
+
+-- SELECT NEXT_DAY(sysdate, 'SATURDAY') AS Next_Saturday, LAST_DAY(sysdate) AS Last_Day_of_Month
+
+
+
+
+
+
