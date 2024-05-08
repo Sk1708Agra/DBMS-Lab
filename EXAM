@@ -1,0 +1,48 @@
+create table College (cName varchar(10), state varchar(10), enrollment int);
+
+insert into College (cName, state, Enrollment) values ('Stanford', 'CA', 15000);
+insert into College (cName, state, Enrollment) values ('Berkley', 'CA', 36000);
+insert into College (cName, state, Enrollment) values ('MIT', 'NY', 10000);
+insert into College (cName, state, Enrollment) values ('Cornell', 'CA', 50040);
+
+Create table Apply (sID int, cName varchar(10), major varchar(20), decision char(1));
+
+insert into Apply(sID, cName, major, decision) values (123, 'Stanford', 'CSE', 'Y');
+insert into Apply(sID, cName, major, decision) values (234, 'Oxford', 'MECH', 'N');
+insert into Apply(sID, cName, major, decision) values (210, 'MIT', 'CSE', 'Y');
+insert into Apply(sID, cName, major, decision) values (121, 'Stanford', 'EcE', 'Y');
+
+Create table Student (sID int, sName varchar(10), GPA number (2,1), sizeHS int, Age number (5));
+
+insert into Student (sId, sName, GPA, sizeHS, Age) values (123, 'Shubham', 8.2, 1000, 17);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (234, 'Shiva', 7.2, 1500, 28);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (121, 'Abhishek', 6.3, 1000, 25);
+insert into Student (sId, sName, GPA, sizeHS, Age) values (210, 'Lokesh', 9.5, 1500, 25);
+
+SELECT sId, sName, GPA 
+FROM Student 
+WHERE sId = 210;
+
+SELECT * 
+FROM Student 
+WHERE sName LIKE 'S%';
+
+SELECT * 
+FROM Student 
+ORDER BY GPA ASC;
+
+SELECT * 
+FROM Student 
+WHERE AGE > 17 AND GPA > 7.2;
+
+SELECT * 
+FROM Student 
+WHERE sName = 'Shubham' OR age = 17;
+
+SELECT * 
+FROM Student 
+WHERE GPA > 6.3;
+
+Select * 
+FROM Student 
+WHERE GPA < 7.2;
